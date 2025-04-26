@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+ body,html{
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298, #00c6ff);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items at the start to avoid pushing everything to the center */
+            height: 100vh;
+            text-align: center;
+            overflow-y: auto; /* Allows scrolling if content exceeds screen height */
+            padding: 20px; /* Adding padding to avoid touching edges */
+            box-sizing: border-box; /* Makes sure padding doesn't overflow */
+            background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #00c3ff);
+      background-size: 400% 400%;
+      animation: gradientShift 20s ease infinite;
+      overflow: auto;
+        }
+        @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+        /* Heading Styles */
+        
+        .ktm {
+            font-weight: bold;
+            color: #eb3349;
+            text-shadow: 0 0 10px #cd14bb;
+            box-shadow:0 5px 10px rgb(28, 217, 103);
+            animation-play-state: running;
+        }
+
+        
+
+        
+        .card-3d {
+            width: 80rem;
+            height: 200px;
+            background: linear-gradient(135deg, #302b63, #00c3ff,#f66f8d,#ffb643);
+            border-radius: 20px;
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: transform 0.6s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            height: 10vh; /* Full height of the viewport */
+            display: flex;
+            justify-content: center; /* Horizontal centering */
+            align-items: center;
+            color: #aa10a0;
+            font-size: 50px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            text-shadow: 0 0 10px #00c3ff;
+            box-shadow: 0 6px 12px #dd4;
+  
+}
+
+            .card-3d:hover {
+            transform: rotateY(15deg) rotateX(5deg);
+            }
+
+           h1:hover
+              {
+                   transform: translateY(-5px) scale(1.02);
+                        box-shadow: 0 6px 12px rgba(8, 223, 65, 0.3);
+                 }
+
+
+        /* Image Styling */
+        .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.image {
+    position: relative;
+    display: inline-block;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+    transform-style: preserve-3d;
+}
+
+.image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.image:hover img {
+    transform: scale(1.1) rotate(1deg);
+    box-shadow: 0 10px 20px rgba(0, 195, 255, 0.6);
+}
+
+/* ✨ Fancy gradient glow */
+.image::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(0,195,255,0.2), rgba(170,16,160,0.2));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.image:hover::after {
+    opacity: 1;
+}
+
+/* ✨ Text that fades in on hover */
+.hover-text {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.image:hover .hover-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+ /* Fade In Animation */
+ @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Slide In From Left Animation */
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 1.5s ease-out;
+        }
+
+        /* Scale Up Animation */
+        @keyframes scaleUp {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .scale-up {
+            animation: scaleUp 1s ease-out;
+        }
+
+        /* Text Tectonic Animation */
+        @keyframes tectonic {
+            0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(2deg);
+            }
+            50% {
+                transform: rotate(0deg);
+            }
+            75% {
+                transform: rotate(-2deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .tectonic-text {
+            animation: tectonic 1s ease-in-out infinite;
+        }
+         
+            #ABOUTME {
+        background:-webkit-repeating-linear-gradient(#1d42c8,#6f459e,#f66f8d,#ffb643) ;
+        padding: 40px 20px;
+        text-align: center;
+        border-radius: 50px;
+        box-shadow: #ca3074;
+    }
+    #ABOUTME :hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        color: #00c3ff;
+    }
+    #ABOUTME h2 {
+        font-size: 2rem;
+        color: #221385;
+    }
+
+    #ABOUTME p {
+        font-size: 1rem;
+        color: #555;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .gradient-text {
+    font-size: 20px;
+        font-weight: bold;
+        background: linear-gradient(90deg, #cdf212, #2fdb4f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    #skills {
+        padding: 50px 20px;
+        text-align: center;
+        background: linear-gradient(180deg, #98c4ec,#ffffff);
+        border-radius: 50px;
+    }
+
+    #skills h2 {
+        font-size: 2rem;
+        color: #333;
+    }
+
+    #skills ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    #skills li {
+        font-size: 1.2rem;
+        color: #555;
+        margin: 10px 0;
+    }
+    .container {
+        text-align: center;
+        backdrop-filter: blur(4px);
+        background: linear-gradient(#00c3ff) ;
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 195, 255, 0.4);
+        }
+        
+        .featured {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .featured .card {
+        background: linear-gradient(to bottom, #ff7eb3, #ff758c);
+        color: white;
+        border-radius: 10px;
+        padding: 20px;
+        width: 280px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .featured .card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+        </style>
+        <script>
+            window.onload = function ()
+            // Smooth scroll back to top
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    CanvasPattern
+        </script>
+            </head>
+            <body>
+                <div class="conatainer">
+                    <h2 class="fade-in ktm" > MY WEB DESIGN PORTFOLIO</h2>
+                    <h1 class="main slide-in-left card-3d">WELCOME TO KTM TECH HUB</h1>
+
+                    <h2 class="fade in slide-in-left .TOM">where your dreams become reality</h2>
+
+                <div class="image-container">
+                    <div class="image">
+                    <img class="scale-up" src="https://images.unsplash.com/photo-1481487196290-c152efe083f5?q=80&w=1924&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                </div>
+
+            </div>
+                
+                    <h2 class="tectonic-text ktm">Welcome to the Future of Web Design!</h2>
+                
+                </div>
+            <div class="sections">
+
+            <section id="ABOUTME" class="slide-in-left outlook" >
+                <h2>ABOUT ME</h2>
+
+                <pre class="gradient-text fade-in">
+                Hi, I’m KIRANGA TOM MURIITHI. I'm passionate 
+                about full-stack development and
+                learning new technologies. 
+                Currently, I’m working on improving
+                my skills and building projects that
+                    help me grow as a developer.
+                In my spare time, I enjoy [music, and CODING].
+                I AM ALSO A BORN AGAIN CHRISTIAN AND BELIEVER OF CHRIST
+                </pre>
+            </section>
+                
+      <section id="skills" class="fade-in">
+                <h2>Skills</h2>
+                <ul>
+                <li>HTML, CSS, JavaScript <br>STLL LEARNING</li>
+                <li>React, Node.js (YET TO LEARN)</li>
+                        <li>Git, GitHub. (LITTLE BIT)</li>
+                <li>Database Management (MySQL, MongoDB)</li>
+                </ul>
+            
+            </body>
+       </html>
